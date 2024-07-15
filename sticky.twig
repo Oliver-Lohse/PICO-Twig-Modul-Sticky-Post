@@ -12,16 +12,12 @@
         <div class="container-fluid py-5 bg-light">
             <div class="container g-0">
 
-                {% if config.theme_config.sticky.heading %}
-                    <p class="lead text-center text-secondary mb-5">Empfohlene Artikel von <span>{{ pages|length }}</span></p>
-                {% endif %}
+                <p class="lead text-center text-secondary mb-5">Empfohlene Artikel von <span>{{ pages|length }}</span></p>
 
                 <div class="row">
                 {% for page in pages if page.title and not page.hidden and page.meta.Sticky %}
 
-                    {% set size = config.theme_config.sticky.weights[loop.index-1] %}
-
-                    <div class="col-sm-{{size}} mb-3">
+                    <div class="col-sm-3 mb-3">
                         {% if config.theme_config.sticky.logo %}
                             <div class="text-center">
                                 <img src="{{assets_url}}/{{page.meta.logo}}" class="img-fluid mb-3 w-50">
@@ -49,8 +45,6 @@
 
                 {% endfor %}
                 </div>
-
-            {% include 'modules/rss-feed.twig' %}
 
             </div>
         </div>
